@@ -1,0 +1,205 @@
+/* Global body/html reset - Crucial for removing default browser margins/padding */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Ensure html and body take full viewport height */
+  background-color: var(--color-creamson); /* Default page background */
+}
+
+.header__nav {
+  display: flex; /* Using flexbox for simplicity and predictable splitting */
+  justify-content: space-between; /* Pushes logo to left, menu to right */
+  align-items: center; /* Vertically centers content */
+  padding: 32px 64px; /* Overall header padding */
+  position: relative;
+  z-index: 100;
+  overflow: hidden;
+  height: auto; /* Allow content to dictate height */
+  /* Linear gradient for the half-red, half-cream effect */
+  background: linear-gradient(to right, var(--primary-color) 50%, var(--color-creamson) 50%);
+}
+
+.header__logo {
+  flex: 1; /* Allows it to take up proportional space in the left half */
+  display: flex;
+  justify-content: flex-start; /* Aligns logo content to the start */
+  align-items: center; /* Vertically centers logo content */
+
+  position: relative;
+  overflow: hidden;
+  /* No specific background-color here, as linear-gradient on parent covers it */
+}
+
+.header__logo h4 {
+  padding-left: 30px; /* Padding for the text within the logo area */
+
+  font-size: 24px;
+  font-weight: bold;
+  font-family: var(--playfair-display);
+  text-transform: uppercase;
+  color: var(--color-white); /* White text for "Sushihaus" over the red part */
+  opacity: 0.8;
+  z-index: 2;
+  white-space: nowrap; /* Prevent text from wrapping prematurely */
+}
+
+.header__logo-overlay {
+  display: none; /* This overlay is not actively used for the half-half effect with linear-gradient, can remain hidden */
+}
+
+.header__menu {
+  flex: 1; /* Adjust this flex value to fine-tune the visual split if needed */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Aligns menu items to the end */
+  gap: 64px;
+
+  list-style: none;
+  /* No specific background-color here, as linear-gradient on parent covers it */
+}
+
+.header__menu li {
+  font-family: var(--plus-jakarta-sans);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--secondary-color); /* Dark text for menu items over the cream part */
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  padding: 5px 0;
+}
+
+.header__menu li::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease-in-out;
+}
+
+.header__menu li:hover::after {
+  width: 100%;
+}
+
+.header__menu li img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.header__search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.header__search-input {
+  border: none;
+  border-bottom: 2px solid var(--secondary-color);
+  background: transparent;
+  padding: 5px 0;
+  margin-left: 10px;
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.header__search-input.active {
+  width: 150px;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile Menu Styles */
+.header__menu-mobile {
+  display: none; /* Hidden by default on desktop */
+}
+
+/* --- Responsive Design / Media Queries --- */
+
+/* For screens smaller than 1024px (typical tablet/large mobile landscape) */
+@media screen and (max-width: 1024px) {
+    .header__nav {
+        padding: 20px 40px; /* Reduce padding for smaller screens */
+        /* Adjust gradient if needed, or keep 50% split */
+        background: linear-gradient(to right, var(--primary-color) 50%, var(--color-creamson) 50%);
+    }
+
+    .header__menu {
+        gap: 30px; /* Reduce gap between menu items */
+        flex: 2; /* Allow menu to take more space if needed */
+    }
+
+    .header__menu li {
+        font-size: 14px; /* Reduce font size for menu items */
+    }
+
+    .header__search-input.active {
+        width: 120px; /* Adjust search input width */
+    }
+}
+
+
+/* For screens smaller than 768px (typical mobile landscape/portrait) */
+@media screen and (max-width: 768px) {
+    .header__nav {
+        padding: 15px 20px; /* Further reduce padding for mobile */
+        /* Mobile layout will use flex-start for logo and flex-end for hamburger icon */
+        justify-content: flex-start;
+        background: var(--primary-color); /* Make header fully red on mobile for simplicity, or adjust gradient if preferred */
+    }
+
+    .header__logo {
+        flex: none; /* Don't allow logo to grow too much */
+        width: auto; /* Let content dictate width */
+    }
+
+    .header__logo h4 {
+        padding-left: 0; /* Remove left padding for logo text to be closer to edge */
+        font-size: 20px; /* Reduce font size for "Sushihaus" */
+    }
+
+    .header__menu {
+        display: none; /* Hide desktop menu on mobile */
+    }
+
+    .header__menu-mobile {
+        display: flex; /* Show mobile menu (hamburger icon) */
+        flex: 1; /* Allow it to take up remaining space */
+        justify-content: flex-end; /* Push hamburger to the right */
+        align-items: center;
+        gap: 0; /* No gap needed for single icon */
+    }
+
+    .header__menu-mobile img {
+        width: 28px; /* Adjust hamburger icon size */
+        height: 28px;
+        cursor: pointer;
+    }
+
+    .header__search-container {
+        /* Hide search input on mobile by default to simplify header,
+           you can add JS to toggle a search overlay if desired */
+        display: none;
+    }
+}
+
+/* For very small screens (e.g., iPhone SE) */
+@media screen and (max-width: 480px) {
+    .header__nav {
+        padding: 10px 15px; /* Even smaller padding */
+    }
+
+    .header__logo h4 {
+        font-size: 18px; /* Further reduce font size for "Sushihaus" */
+    }
+
+    .header__menu-mobile img {
+        width: 24px; /* Slightly smaller hamburger icon */
+        height: 24px;
+    }
+}

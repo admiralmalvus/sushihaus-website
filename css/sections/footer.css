@@ -1,0 +1,106 @@
+.footer {
+  width: 100%;
+  padding: 20px 40px;
+  background: var(--color-white);
+
+  flex-wrap: wrap;
+  gap: 20px;
+
+  overflow: hidden;
+}
+
+.footer__logo {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: var(--playfair-display);
+  text-transform: uppercase;
+  color: var(--secondary-color);
+
+  cursor: pointer;
+}
+
+.footer__logo span {
+  color: var(--primary-color)
+}
+
+.footer ul {
+  list-style: none;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 64px;
+}
+
+.footer ul:last-child {
+  gap: 32px; /* Ensure consistent spacing between social icons */
+}
+
+/* FOOTER NAVIGATION LINKS */
+.footer__nav li {
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--plus-jakarta-sans);
+  text-transform: uppercase;
+  color: var(--secondary-color);
+
+  cursor: pointer;
+}
+
+.footer__nav li a:hover {
+  transform: scale(1.05); /* Smooth grow */
+  color: var(--primary-color); /* Change to accent red */
+}
+
+
+/* FOOTER SOCIAL ICONS (THE CIRCULAR BACKGROUND) */
+.footer__social li {
+  width: 42px;
+  height: 42px;
+
+  background-color: var(--secondary-color); /* Default black background for all */
+  border-radius: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition for background and transform */
+}
+
+/* Specific hover colors for each social icon's background */
+#facebook-icon-container:hover {
+  background-color: #1877F2; /* Facebook blue */
+  transform: scale(1.1); /* Smooth grow */
+}
+
+#instagram-icon-container:hover {
+  background-color: #E1306C; /* Instagram vibrant pink/red */
+  transform: scale(1.1); /* Smooth grow */
+}
+
+#twitter-icon-container:hover {
+  background-color: #1DA1F2; /* Twitter/X blue */
+  transform: scale(1.1); /* Smooth grow */
+}
+
+/* Ensure the anchor tag itself is a flex container to center the image */
+.footer__social li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Make anchor fill the li */
+  height: 100%; /* Make anchor fill the li */
+}
+
+
+/* Social media icon image styling */
+.footer__social li img {
+  width: 45%;
+  height: 45%;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* Default: white icon (assuming original SVGs are black) */
+  transition: filter 0.3s ease-in-out; /* Smooth transition for icon color */
+}
+
+/* On hover, the image filter is removed, assuming the original brand logo image has color,
+   or if the base image is already white, this means it will stay white. */
+.footer__social li:hover img {
+    filter: none; /* Revert filter to show original icon color if it's a colored SVG, or keep it white if it's already white */
+}
