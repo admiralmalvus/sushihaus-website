@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/sushi.png" />
+    <!-- IMPORTANT: Base tag for GitHub Pages deployment -->
+    <!-- This tells the browser that all relative paths should be resolved from the repository name. -->
+    <base href="/sushihaus-website/"> 
+    
+    <link rel="icon" type="image/png" href="sushi.png" />
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/modals.css">
     <!-- AOS CSS CDN -->
@@ -15,7 +19,7 @@
     <header>
       <nav class="header__nav">
         <div class="header__logo">
-          <h4 data-aos="fade-down"><span>Sushi</span>haus</h4>
+          <h4 data-aos="fade-down">Sushihaus</h4>
           <!-- The header__logo-overlay div has been completely removed to fix the red block -->
         </div>
 
@@ -120,19 +124,19 @@
       <div class="popular-foods__filters sushi__hide-scrollbar" data-aos="fade-up">
         <button class="popular-foods__filter-btn active" data-filter="best-seller">Best Seller</button>
         <button class="popular-foods__filter-btn" data-filter="sushi">
-          <img src="/assets/sushi-9.png" alt="sushi icon">
+          <img src="assets/sushi-9.png" alt="sushi icon">
           Sushi
         </button>
         <button class="popular-foods__filter-btn" data-filter="ramen">
-          <img src="/assets/sushi-8.png" alt="ramen icon">
+          <img src="assets/sushi-8.png" alt="ramen icon">
           Ramen
         </button>
         <button class="popular-foods__filter-btn" data-filter="udon">
-          <img src="/assets/sushi-7.png" alt="udon icon">
+          <img src="assets/sushi-7.png" alt="udon icon">
           Udon
         </button>
         <button class="popular-foods__filter-btn" data-filter="curry">
-          <img src="/assets/curry-1.png" alt="curry icon">
+          <img src="assets/curry-1.png" alt="curry icon">
           Curry
         </button>
       </div>
@@ -274,7 +278,7 @@
 
     <footer class="footer flex-between">
       <h3 class="footer__logo">
-        <span>Sushi</span>haus
+        <span>Sushi</span>man
       </h3>
 
       <ul class="footer__nav">
@@ -399,7 +403,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS Public Key
-        emailjs.init("MFl4Jm_6Y4uYb8bwD");
+        emailjs.init("YOUR_PUBLIC_KEY");
     </script>
     <!-- AOS JS CDN -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
